@@ -3,18 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Particle Model</title>
+    <title>The Particle Model</title>
+    <meta name="description" content="An interactive 3D model of how particles are arranged and move in a solid, a liquid, and a gas." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <header>
+    <header class="title">
       <h1>The Particle Model</h1>
-      <p>Solids, liquids, and gases — coming soon!</p>
+      <p>How particles are arranged and move in a <span class="chip solid">solid</span>, a
+        <span class="chip liquid">liquid</span>, and a <span class="chip gas">gas</span></p>
     </header>
-    <div id="scene"></div>
+
+    <main>
+      <section class="panel" id="each-state">
+        <h2><span class="num">1</span> Particles in Each State</h2>
+        <p class="hint">Drag the jars to spin them around!</p>
+        <div class="stage stage-three" id="jars"></div>
+        <div class="trio labels">
+          <span class="chip solid">Solid</span>
+          <span class="chip liquid">Liquid</span>
+          <span class="chip gas">Gas</span>
+        </div>
+        <p class="note">The particles are the <strong>same size</strong> in all three states. They do not get
+          bigger when heated &mdash; only the space between them changes.</p>
+      </section>
+
+      <section class="panel" id="close-up">
+        <h2><span class="num">2</span> Particles Close Up</h2>
+        <div class="trio">
+          <figure class="closeup">
+            <span class="chip solid">Solid</span>
+            <canvas data-kind="solid" aria-label="Solid particles vibrating in a tight grid"></canvas>
+            <figcaption>Particles are vibrating closely together.</figcaption>
+          </figure>
+          <figure class="closeup">
+            <span class="chip liquid">Liquid</span>
+            <canvas data-kind="liquid" aria-label="Liquid particles moving around while staying together"></canvas>
+            <figcaption>Particles move around but are still together.</figcaption>
+          </figure>
+          <figure class="closeup">
+            <span class="chip gas">Gas</span>
+            <canvas data-kind="gas" aria-label="Gas particles far apart, bouncing everywhere"></canvas>
+            <figcaption>Particles are far apart and bounce everywhere fast.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel" id="changing-state">
+        <h2><span class="num">3</span> Changing State</h2>
+        <p class="big-rule heat-rule"><strong>HEAT</strong> makes particles spread apart and move faster.</p>
+        <div class="heat-lab">
+          <div class="stage stage-one" id="heat-jar"></div>
+          <div class="controls">
+            <p class="status" aria-live="polite"><span id="state-name">Solid</span></p>
+            <p class="status-detail" id="state-detail">&nbsp;</p>
+            <label class="slider-label" for="heat">Heat it up! 🔥</label>
+            <input type="range" id="heat" min="0" max="100" value="12" />
+            <div class="stops" aria-hidden="true">
+              <span>❄️<br />Solid</span>
+              <span>Melting</span>
+              <span>💧<br />Liquid</span>
+              <span>Evaporating</span>
+              <span>☁️<br />Gas</span>
+            </div>
+            <p class="counter">Particles in the jar: <strong id="particle-count">27</strong>
+              <br /><small>Heating and cooling never change the number of particles!</small></p>
+          </div>
+        </div>
+        <p class="big-rule cool-rule"><strong>COOLING</strong> (taking heat away) makes particles slow down and move
+          closer to each other.</p>
+      </section>
+
+      <section class="panel" id="properties">
+        <h2><span class="num">4</span> Key Properties</h2>
+        <div class="trio">
+          <div class="property solid" data-kind="solid">
+            <span class="chip solid">Solid</span>
+            <ul>
+              <li>Close together</li>
+              <li>Keeps its shape</li>
+              <li>Vibrates in place</li>
+            </ul>
+          </div>
+          <div class="property liquid" data-kind="liquid">
+            <span class="chip liquid">Liquid</span>
+            <ul>
+              <li>Close together</li>
+              <li>Slides past each other</li>
+              <li>Takes the shape of its container</li>
+            </ul>
+          </div>
+          <div class="property gas" data-kind="gas">
+            <span class="chip gas">Gas</span>
+            <ul>
+              <li>Fills the whole jar</li>
+              <li>Far apart</li>
+              <li>Bounces everywhere</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="why">
+        <h2><span class="num">5</span> Why It Changes</h2>
+        <div id="cycle"></div>
+        <p class="explain"><span class="mark heat">Heating</span> the particles will give them energy and make them
+          move faster and spread apart. <span class="mark cool">Cooling</span> takes energy away, so they slow down
+          and move closer together.</p>
+      </section>
+
+      <section class="panel" id="limitation">
+        <h2><span class="num">6</span> Limitation</h2>
+        <div class="bubble">
+          Real particles are far too small to see, even with a microscope, and there are more than trillions of them.
+        </div>
+      </section>
+    </main>
+
+    <footer>States of Matter Exhibit &middot; The Particle Model Engineer</footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
