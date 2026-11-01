@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+
+# Reference photos (school worksheet, drafts) — kept local, not published
+dev-doc/
